@@ -1,0 +1,17 @@
+pipeline {
+    agent { label "terraform"}
+    stages {
+        stage ( "terraform init") {
+            steps {
+                sh ( "terraform init")
+            }
+        }
+        stage ( "terraform action") {
+            steps {
+                echo "terraform action"
+                sh ("terraform apply --auto-approve")
+            }
+        }
+    }
+    
+}
